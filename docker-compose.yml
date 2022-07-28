@@ -31,7 +31,6 @@ services:
   #   depends_on:
   #     - proxy
 
-
 volumes:
   db:
   nextcloud:
