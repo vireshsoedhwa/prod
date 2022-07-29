@@ -5,7 +5,7 @@ services:
     build: ./web
     restart: always
     volumes:
-      - ./web/index.html:/var/www/html/index.html
+      - ./web:/var/www/html:ro
     environment:
       - VIRTUAL_HOST=playlistener.tk
       - LETSENCRYPT_HOST=playlistener.tk
