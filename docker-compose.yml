@@ -7,8 +7,8 @@ services:
     volumes:
       - ./web:/var/www/html:ro
     environment:
-      - VIRTUAL_HOST=playlistener.tk
-      - LETSENCRYPT_HOST=playlistener.tk
+      - VIRTUAL_HOST=ggqq.tk
+      - LETSENCRYPT_HOST=ggqq.tk
     # depends_on:
     #   - proxy
     networks:
