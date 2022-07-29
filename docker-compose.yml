@@ -1,38 +1,47 @@
 version: '3'
 services:
 
+  # web:
+  #   build: ./web
+  #   restart: always
+  #   volumes:
+  #     - ./web:/var/www/html:ro
+  #   environment:
+  #     - VIRTUAL_HOST=ggqq.tk
+  #     - LETSENCRYPT_HOST=ggqq.tk
+  #   depends_on:
+  #     - proxy
+  #     - letsencrypt-companion
+  #   networks:
+  #     - proxy-tier
+  #     - default
+
+  # test with grafana
   web:
-    build: ./web
-    restart: always
-    volumes:
-      - ./web:/var/www/html:ro
+    image: grafana/grafana
     environment:
       - VIRTUAL_HOST=ggqq.tk
+      - VIRTUAL_PORT=3000
       - LETSENCRYPT_HOST=ggqq.tk
-    # depends_on:
-    #   - proxy
-    networks:
-      - proxy-tier
-      - default
+    depends_on:
+      - nginx-proxy
+      - nginx-proxy-acme
 
-
-  proxy:
-    build: ./proxy
+  nginx-proxy:
+    image: nginxproxy/nginx-proxy
     restart: always
     ports:
       - 80:80
       - 443:443
-    labels:
-      com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     volumes:
       - certs:/etc/nginx/certs:ro
       - vhost.d:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
-    networks:
-      - proxy-tier
+    # networks:
+    #   - proxy-tier
 
-  letsencrypt-companion:
+  nginx-proxy-acme:
     image: nginxproxy/acme-companion
     restart: always
     volumes:
@@ -41,18 +50,16 @@ services:
       - vhost.d:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - proxy-tier
+    # networks:
+    #   - proxy-tier
     depends_on:
       - proxy
 
 volumes:
-  db:
-  web:
   certs:
   acme:
   vhost.d:
   html:
 
-networks:
-  proxy-tier:
+# networks:
+#   proxy-tier:
