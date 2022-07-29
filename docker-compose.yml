@@ -15,6 +15,7 @@ services:
       - proxy-tier
       - default
 
+
   proxy:
     build: ./proxy
     restart: always
