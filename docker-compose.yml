@@ -11,7 +11,7 @@ services:
       - VIRTUAL_PORT=8080
       - LETSENCRYPT_HOST=ggqq.tk
     ports:
-      - 8080:8080
+      - 8080:80
     depends_on:
       - nginx-proxy
       - nginx-proxy-acme
@@ -58,7 +58,7 @@ services:
     # networks:
     #   - proxy-tier
     depends_on:
-      - proxy
+      - nginx-proxy
 
 volumes:
   certs:
