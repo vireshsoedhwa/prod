@@ -8,10 +8,10 @@ services:
       - ./html:/usr/share/nginx/html
     environment:
       - VIRTUAL_HOST=moog.tk
-      # - VIRTUAL_PORT=8080
+      - VIRTUAL_PORT=8080
       - LETSENCRYPT_HOST=moog.tk
-  #   ports:
-  #     - 8080:80
+    ports:
+      - 8080:80
   #   depends_on:
   #     - nginx-proxy
   #     - nginx-proxy-acme
