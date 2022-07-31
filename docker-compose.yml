@@ -1,18 +1,18 @@
 version: '3'
 services:
 
-  web:
+  playlistenerweb:
     image: nginx:alpine
     restart: always
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./html:/usr/share/nginx/html
+      - ./playlistenerweb/nginx.conf:/etc/nginx/nginx.conf:ro
+      - playlistenerwebassets:/usr/share/nginx/html
     environment:
       - VIRTUAL_HOST=moog.tk
-      - VIRTUAL_PORT=8080
+      - VIRTUAL_PORT=9000
       - LETSENCRYPT_HOST=moog.tk
-    ports:
-      - 8080:8080
+    # ports:
+    #   - 8080:8080
     depends_on:
       - nginx-proxy
       - nginx-proxy-acme
@@ -52,6 +52,8 @@ volumes:
   acme:
   vhost.d:
   html:
+
+  playlistenerwebassets:
 
 # networks:
 #   proxy-tier:
