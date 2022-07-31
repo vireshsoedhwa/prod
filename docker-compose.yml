@@ -60,5 +60,6 @@ volumes:
 networks:
   proxy-tier:
   playlistener-network:
+    external: true
     driver: bridge
     name: playlistener-network
