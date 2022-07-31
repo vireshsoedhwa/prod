@@ -1,29 +1,12 @@
 version: '3'
 services:
 
-  # plweb:
-  #   image: nginx:alpine
-  #   restart: always
-  #   volumes:
-  #     - ./playlistenerweb/nginx.conf:/etc/nginx/nginx.conf:ro
-  #     - playlistenerwebassets:/usr/share/nginx/html:ro
-  #   environment:
-  #     - VIRTUAL_HOST=moog.tk
-  #     - VIRTUAL_PORT=9000
-  #     - LETSENCRYPT_HOST=moog.tk
-  #   networks:
-  #     - playlistener-network
-  #   depends_on:
-  #     - nginx-proxy
-  #     - nginx-proxy-acme
-
   plweb:
     image: nginx:alpine
     restart: always
     volumes:
       - ./playlistenerweb/nginx.conf:/etc/nginx/nginx.conf:ro
       - playlistenerwebassets:/usr/share/nginx/html:ro
-      # - ./html/index.html:/usr/share/nginx/html/index.html
     environment:
       - VIRTUAL_HOST=moog.tk
       - VIRTUAL_PORT=9000
