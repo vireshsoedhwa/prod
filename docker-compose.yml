@@ -6,14 +6,13 @@ services:
     restart: always
     volumes:
       - ./playlistenerweb/nginx.conf:/etc/nginx/nginx.conf:ro
-      - playlistenerwebassets:/usr/share/nginx/html
+      - playlistenerwebassets:/usr/share/nginx/html:ro
     environment:
       - VIRTUAL_HOST=moog.tk
       - VIRTUAL_PORT=9000
       - LETSENCRYPT_HOST=moog.tk
     networks:
       - playlistener-network
-
     depends_on:
       - nginx-proxy
       - nginx-proxy-acme
@@ -55,6 +54,7 @@ volumes:
   html:
 
   playlistenerwebassets:
+    external: true
 
 networks:
   proxy-tier:
