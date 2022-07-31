@@ -1,7 +1,7 @@
 version: '3'
 services:
 
-  playlistenerweb:
+  plweb:
     image: nginx:alpine
     restart: always
     volumes:
