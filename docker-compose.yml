@@ -11,8 +11,8 @@ services:
       - VIRTUAL_HOST=moog.tk
       - VIRTUAL_PORT=9000
       - LETSENCRYPT_HOST=moog.tk
-    networks:
-      - playlistener-network
+    # networks:
+    #   - playlistener-network
     depends_on:
       - nginx-proxy
       - nginx-proxy-acme
@@ -58,4 +58,4 @@ volumes:
 
 networks:
   proxy-tier:
-  playlistener-network:
+  # playlistener-network:
