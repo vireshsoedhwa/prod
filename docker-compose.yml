@@ -28,6 +28,9 @@ services:
       - VIRTUAL_HOST=moog.tk
       - VIRTUAL_PORT=9000
       - LETSENCRYPT_HOST=moog.tk
+    networks:
+      - proxy-tier
+      - playlistener-network
     depends_on:
       - nginx-proxy
       - nginx-proxy-acme
@@ -45,8 +48,8 @@ services:
       - vhost.d:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
-    # networks:
-    #   - proxy-tier
+    networks:
+      - proxy-tier
 
   nginx-proxy-acme:
     image: nginxproxy/acme-companion
@@ -57,8 +60,8 @@ services:
       - vhost.d:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    # networks:
-    #   - proxy-tier
+    networks:
+      - proxy-tier
     depends_on:
       - nginx-proxy
 
