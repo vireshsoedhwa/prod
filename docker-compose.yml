@@ -11,8 +11,6 @@ services:
       - VIRTUAL_HOST=moog.tk
       - VIRTUAL_PORT=9000
       - LETSENCRYPT_HOST=moog.tk
-    # ports:
-    #   - 8080:8080
     depends_on:
       - nginx-proxy
       - nginx-proxy-acme
