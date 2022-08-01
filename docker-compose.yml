@@ -5,8 +5,8 @@ services:
     image: nginx:alpine
     restart: always
     volumes:
-      - ./plweb/nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./plweb/index.html:/usr/share/nginx/html:ro
+      - /plweb/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /plweb/index.html:/usr/share/nginx/html:ro
       # - playlistenerwebassets:/usr/share/nginx/html:ro
     environment:
       - VIRTUAL_HOST=moog.tk
@@ -55,8 +55,8 @@ volumes:
   vhost.d:
   html:
 
-  playlistenerwebassets:
-    external: true
+  # playlistenerwebassets:
+  #   external: true
 
 networks:
   proxy-tier:
