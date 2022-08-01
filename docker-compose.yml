@@ -6,7 +6,8 @@ services:
     restart: always
     volumes:
       - ./plweb/nginx.conf:/etc/nginx/nginx.conf:ro
-      - playlistenerwebassets:/usr/share/nginx/html:ro
+      - ./plweb/index.html:/usr/share/nginx/html:ro
+      # - playlistenerwebassets:/usr/share/nginx/html:ro
     environment:
       - VIRTUAL_HOST=moog.tk
       - VIRTUAL_PORT=9000
