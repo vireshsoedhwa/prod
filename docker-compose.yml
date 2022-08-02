@@ -7,7 +7,6 @@ services:
     volumes:
       - ./plweb/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./plweb/500:/usr/share/nginx/html:ro  
-      # - playlistenerwebassets:/usr/share/nginx/html:ro
     environment:
       - VIRTUAL_HOST=moog.tk
       - VIRTUAL_PORT=9000
@@ -54,9 +53,6 @@ volumes:
   acme:
   vhost.d:
   html:
-
-  # playlistenerwebassets:
-  #   external: true
 
 networks:
   proxy-tier:
