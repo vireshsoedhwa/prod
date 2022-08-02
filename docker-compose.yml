@@ -9,7 +9,7 @@ services:
       - ./plweb/500:/usr/share/nginx/html:ro  
     environment:
       - VIRTUAL_HOST=moog.tk
-      - VIRTUAL_PORT=9000
+      # - VIRTUAL_PORT=9000
       - LETSENCRYPT_HOST=moog.tk
     networks:
       - proxy-tier
